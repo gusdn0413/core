@@ -20,16 +20,16 @@ public class ApplicationContextBasicFindTest {
     @DisplayName("빈 이름으로 조회")
     void findBeanByName() {
         MemberService memberService = ac.getBean("memberService", MemberService.class);
-//        System.out.println("memberService = " + memberService);
-//        System.out.println("memberService.getClass() = " + memberService.getClass());
+        System.out.println("memberService = " + memberService);
+        System.out.println("memberService.getClass() = " + memberService.getClass());
         assertThat(memberService).isInstanceOf(MemberService.class);
     }
     @Test
     @DisplayName("이름 없이 타입으로만 조회")
     void findBeanByType() {
         MemberService memberService = ac.getBean(MemberService.class);
-//        System.out.println("memberService = " + memberService);
-//        System.out.println("memberService.getClass() = " + memberService.getClass());
+        System.out.println("memberService = " + memberService);
+        System.out.println("memberService.getClass() = " + memberService.getClass());
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
@@ -37,15 +37,15 @@ public class ApplicationContextBasicFindTest {
     @DisplayName("구체 타입 으로 조회")
     void findBeanByName2() {
         MemberService memberService = ac.getBean("memberService", MemberServiceImpl.class);
-//        System.out.println("memberService = " + memberService);
-//        System.out.println("memberService.getClass() = " + memberService.getClass());
+        System.out.println("memberService = " + memberService);
+        System.out.println("memberService.getClass() = " + memberService.getClass());
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
 
     @Test
     @DisplayName("빈 이름으로 조회 X")
     void findBeanByNameX() {
-        assertThrows(NoSuchBeanDefinitionException.class,() ->
-                ac.getBean("XXXXX", MemberService.class));
+//        MemberService XXXXX = ac.getBean("XXXXX", MemberService.class);
+        assertThrows(NoSuchBeanDefinitionException.class,() -> ac.getBean("XXXXX", MemberService.class));
     }
 }
